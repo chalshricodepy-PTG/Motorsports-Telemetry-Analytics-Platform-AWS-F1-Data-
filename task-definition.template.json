@@ -1,0 +1,36 @@
+{
+  "family": "REPLACE_TASK_FAMILY",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "2048",
+  "memory": "4096",
+  "executionRoleArn": "REPLACE_EXEC_ROLE_ARN",
+  "taskRoleArn": "REPLACE_TASK_ROLE_ARN",
+  "containerDefinitions": [
+    {
+      "name": "ingestor",
+      "image": "REPLACE_IMAGE_URI",
+      "essential": true,
+      "environment": [
+        { "name": "BUCKET", "value": "REPLACE_DATA_BUCKET" },
+        { "name": "SEASON", "value": "2024" },
+        { "name": "EVENTS", "value": "Bahrain,Monaco,Great Britain" },
+        { "name": "SESSIONS", "value": "Q,R" },
+        { "name": "DRIVERS_MODE", "value": "top5_finishers" },
+        { "name": "RAW_PREFIX", "value": "raw" },
+        { "name": "CURATED_PREFIX", "value": "curated" },
+        { "name": "FASTF1_CACHE_DIR", "value": "/tmp/fastf1_cache" },
+        { "name": "MAX_RETRIES", "value": "3" },
+        { "name": "RETRY_BACKOFF_SECONDS", "value": "10" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "REPLACE_LOG_GROUP",
+          "awslogs-region": "REPLACE_REGION",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

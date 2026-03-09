@@ -1,0 +1,19 @@
+[
+  {
+    "Id": "motorsportTelemetryDaily",
+    "Arn": "REPLACE_CLUSTER_ARN",
+    "RoleArn": "REPLACE_EVENTBRIDGE_ROLE_ARN",
+    "EcsParameters": {
+      "TaskDefinitionArn": "REPLACE_TASKDEF_ARN",
+      "TaskCount": 1,
+      "LaunchType": "FARGATE",
+      "NetworkConfiguration": {
+        "awsvpcConfiguration": {
+          "Subnets": ["REPLACE_SUBNET_1", "REPLACE_SUBNET_2"],
+          "SecurityGroups": ["REPLACE_SECURITY_GROUP_ID"],
+          "AssignPublicIp": "ENABLED"
+        }
+      }
+    }
+  }
+]
